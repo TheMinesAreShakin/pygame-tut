@@ -1,0 +1,13 @@
+https://realpython.com/pygame-a-primer/
+
+-pygame.init()
+--this calls the init function of all the seperate modules of pygame.
+
+-<surface>.blit(surf, location)
+--transfers from one surface to another
+--the location can be a tuple or you can pass the surf.get_rect() and it will use the position of the rect
+
+-pygame.display.flip()
+--displays what has been drawn since the last flip
+
+should read this at some point: https://gameprogrammingpatterns.com/contents.html
