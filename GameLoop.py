@@ -24,12 +24,36 @@ def render():
     pygame.display.flip()
 
 
+def update():
+    pressedKeys = pygame.key.get_pressed()
+    player.update(pressedKeys)
+
+
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super(Player, self).__init__()
         self.surf = pygame.Surface((75,75))
         self.surf.fill((255, 255, 255))
         self.rect = self.surf.get_rect()
+
+    def update(self, pressedKeys):
+        if pressedKeys[K_UP]:
+            self.rect.move_ip(0, -5)
+        if pressedKeys[K_DOWN]:
+            self.rect.move_ip(0, 5)
+        if pressedKeys[K_LEFT]:
+            self.rect.move_ip(-5, 0)
+        if pressedKeys[K_RIGHT]:
+            self.rect.move_ip(5, 0)
+
+        if self.rect.left < 0:
+            self.rect.left = 0
+        if self.rect.right > SCREEN_WIDTH:
+            self.rect.right = SCREEN_WIDTH
+        if self.rect.top < 0:
+            self.rect.top = 0
+        if self.rect.bottom > SCREEN_HEIGHT:
+            self.rect.bottom = SCREEN_HEIGHT
 
 
 #initialize all the pygame modules
@@ -48,6 +72,8 @@ player = Player()
 #game loop var
 running = True
 
+clock = pygame.time.Clock()
+
 #game loop
 while running:
     #look at every event in the event queue
@@ -62,4 +88,7 @@ while running:
         elif event.type == QUIT:
             running = False
 
+    update()
     render()
+
+    clock.tick(60)
