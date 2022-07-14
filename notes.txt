@@ -10,4 +10,9 @@ https://realpython.com/pygame-a-primer/
 -pygame.display.flip()
 --displays what has been drawn since the last flip
 
+-pygame custom events
+--pygame defines events internally as integers, so you need to define a new event with a unique integer. The last event pygame reserves is called USEREVENT, so defining ADDENEMY = pygame.USEREVENT + 1 on line 83 ensures it’s unique.
+
+last stopping point: spritecollideany
+
 should read this at some point: https://gameprogrammingpatterns.com/contents.html
